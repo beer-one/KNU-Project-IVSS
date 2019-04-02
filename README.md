@@ -33,4 +33,3 @@ Gstreamer를 활용한 실시간 스트리밍 영상을 퍼블릭 클라우드 A
 - [Public Cloud AWS Rekognition API Guide Line](https://docs.aws.amazon.com/ko_kr/rekognition/latest/dg/what-is.html)
 
 - [Violence Detection by CNN + LSTM](https://github.com/JoshuaPiinRueyPan/ViolenceDetection)
-
