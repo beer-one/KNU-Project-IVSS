@@ -23,9 +23,13 @@ Gstreamer를 활용한 실시간 스트리밍 영상을 퍼블릭 클라우드 A
 -  폭력 발생 시 안면인식을 통해 실시간으로 보호자에게 경보 알림
 -  보호자는 알림 통해 자녀의 폭력이 발생한 시점의 영상 확인 가능
 
+## Gstreamer 실행 명령어
 
+```
+gst-launch-1.0 -v v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=1280,height=720 ! xvimagesink
+```
 
-<br>
+</br>
 
 ## 참고자료
 
@@ -33,3 +37,7 @@ Gstreamer를 활용한 실시간 스트리밍 영상을 퍼블릭 클라우드 A
 - [Public Cloud AWS Rekognition API Guide Line](https://docs.aws.amazon.com/ko_kr/rekognition/latest/dg/what-is.html)
 
 - [Violence Detection by CNN + LSTM](https://github.com/JoshuaPiinRueyPan/ViolenceDetection)
+
+- [gstreamer/gst-plugins-base/snapshot.c](https://cgit.freedesktop.org/gstreamer/gst-plugins-base/tree/tests/examples/snapshot/snapshot.c)
+
+
