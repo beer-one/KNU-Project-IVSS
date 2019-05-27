@@ -29,6 +29,26 @@ Gstreamer를 활용한 실시간 스트리밍 영상을 퍼블릭 클라우드 A
 gst-launch-1.0 -v v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=1280,height=720 ! xvimagesink
 ```
 
+**sender**
+```
+Mpeg-2:
+gst-launch-1.0 -v v4l2src ! video/x-raw,width=640,height=480 ! 
+videoconvert ! avenc_mpeg4 ! rtpmp4vpay config-interval=3 ! udpsink 
+host=127.0.0.1 port=5000
+```
+위의 코드에 사용한 루프백 주소(127.0.0.1) 대신 서버의 ip를 입력하여 
+사용.
+
+**receiver**
+```
+gst-launch-1.0 -v udpsrc port=5000 caps = "application/x-rtp\,\ 
+media\=\(string\)video\,\ clock-rate\=\(int\)90000\,\ 
+encoding-name\=\(string\)MP4V-ES\,\ profile-level-id\=\(string\)1\,\ 
+config\=\(string\)000001b001000001b58913000001000000012000c48d8800cd3204709443000001b24c61766335362e312e30\,\ 
+payload\=\(int\)96\,\ ssrc\=\(uint\)2873740600\,\ 
+timestamp-offset\=\(uint\)391825150\,\ seqnum-offset\=\(uint\)2980" ! 
+rtpmp4vdepay ! avdec_mpeg4 ! autovideosink
+```
 </br>
 
 ## 참고자료
@@ -40,4 +60,5 @@ gst-launch-1.0 -v v4l2src device=/dev/video0 ! video/x-raw,framerate=30/1,width=
 
 - [gstreamer/gst-plugins-base/snapshot.c](https://cgit.freedesktop.org/gstreamer/gst-plugins-base/tree/tests/examples/snapshot/snapshot.c)
 
-
+- [GStreamer RTP UDP 카메라 전송 
+명령](http://blog.naver.com/PostView.nhn?blogId=chandong83&logNo=221263551742)
