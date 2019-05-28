@@ -49,7 +49,32 @@ payload\=\(int\)96\,\ ssrc\=\(uint\)2873740600\,\
 timestamp-offset\=\(uint\)391825150\,\ seqnum-offset\=\(uint\)2980" ! 
 rtpmp4vdepay ! avdec_mpeg4 ! autovideosink
 ```
+
+### Goal  
+- UDP 방식으로 보낸 스트리밍 영상을 Receiver 측(폭력감지 분석모델)에서 원하는 프레임만큼 영상을 가공해야함
+- 현재 Ubuntu -> OSX 로스트리밍이 불가능
+	- S3 버킷에 저장하는 Ubuntu -> Ubuntu 로 받아 저장을 한다음 폭력감지 분석모델(OSX)에서 버킷에 저장된 영상을 실시간으로 꺼내와 분석후 데이터베이스와 알림프로세스 통신 수행  
+
 </br>
+
+## Android AWS SDK 및 S3 연동  
+
+- https://pyxispub.uzuki.live/?p=970#i
+- AWS Cognito: https://console.aws.amazon.com/cognito/home?region=us-east-1
+- Android Commons-Loggins jar error 해결
+	- http://commons.apache.org
+	- https://github.com/aws-amplify/aws-sdk-android/issues/476
+
+### front-end(경보,알림 part) 진행상황  
+
+- Android AWS S3 버킷 연동 성공
+- 부모가 자녀 사진과 전화번호를 앱을 통해 S3버킷에 저장가능  
+
+#### Goal  
+- 폭력발생시, FireBase FCM을 통한 위젯알림 서비스 필요  
+
+</br>
+<hr>
 
 ## 참고자료
 

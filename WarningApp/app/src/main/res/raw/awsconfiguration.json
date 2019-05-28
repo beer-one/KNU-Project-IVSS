@@ -1,0 +1,22 @@
+{
+  "Version": "1.0",
+  "CredentialsProvider": {
+    "CognitoIdentity": {
+      "Default": {
+        "PoolId": "8021df9a-d853-4f12-9c80-579de9952b82",
+        "Region": "us-east-2"
+      }
+    }
+  },
+  "IdentityManager": {
+    "Default": {
+
+    }
+  },
+  "S3TransferUtility": {
+    "Default": {
+      "Bucket": "violence-image",
+      "Region": "ap-northeast-2"
+    }
+  }
+}
