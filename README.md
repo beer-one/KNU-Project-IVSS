@@ -87,3 +87,4 @@ rtpmp4vdepay ! avdec_mpeg4 ! autovideosink
 
 - [GStreamer RTP UDP 카메라 전송 
 명령](http://blog.naver.com/PostView.nhn?blogId=chandong83&logNo=221263551742)
+
