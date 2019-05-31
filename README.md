@@ -67,6 +67,26 @@ rtpmp4vdepay ! avdec_mpeg4 ! autovideosink
 	- https://github.com/aws-amplify/aws-sdk-android/issues/476
 
 <<<<<<< Updated upstream
+
+## Streamer server
+- 웹캠을 연결하여 일정 시간마다 웹캠으로부터 얻은 동영상을 저장하여 해당 정보를 폭력감지 서버에 전송하는 서버.
+- Streamer server는 Violence detection server와 로컬로 연결되어 있으며 일정 시간마다 동영상을 저장하여 저장된 동영상의 경로를 폭력감지 서버에 소켓통신을 통해 전송한다.
+
+## Violence detection server
+
+- LSTM+CNN으로 설계된 딥러닝 폭력감지 모델을 사용. 
+	- [모델 출처] https://github.com/JoshuaPiinRueyPan/ViolenceDetection 
+- Streamer server에게 분석할 동영상의 경로를 얻어 동영상을 읽어와 폭력감지 모델을 사용하여 폭력을 감지한다.
+- 폭력감지 모델은 이전 프레임과 현재 프레임을 비교하여 현재 프레임에서 폭력상황이 발생하고 있는지 감지한다.
+- 만약 폭력을 감지했다면 감지된 프레임이 연속적으로 50개가 될 때 까지 감지를 지속적으로 한다.
+- 연속적으로 50개의 프레임에서 폭력이 감지되었다면 폭력이 감지된 50개의 프레임을 S3 버킷에 저장한다.
+- 그 후 소켓통신을 통해 얼굴인식 서버에 버킷에 저장된 프레임 파일의 이름을 전송한다.
+- 해당 모델을 적용시키기 위해서는 pre-trained model이 필요하다. 
+	- darknet19 checkpoint를 다운로드하여 src/net/G2D19_P2OF_ResHB_1LSTM.py에 있는 DARKNET19_MODEL_PATH 경로에 저장한다.
+		- 다운로드 경로 : https://pjreddie.com/darknet/imagenet/
+	- 폭력감지 모델에 관한 checkpoint를 다운로드하여 settings/DeploySettings.py에 있는 PATH_TO_MODEL_CHECKPOINTS 경로에 저장한다. 
+		- 다운로드 경로 : https://drive.google.com/open?id=1TwGzBTooHvAkBcrKzEfukrZMSakuCdYd
+
 ## front-end(경보,알림 part) 진행상황  
 =======
 ### front-end(경보,알림 part)   
