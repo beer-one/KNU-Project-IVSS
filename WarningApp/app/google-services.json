@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "627230910278",
+    "firebase_url": "https://warningapp-d6c27.firebaseio.com",
+    "project_id": "warningapp-d6c27",
+    "storage_bucket": "warningapp-d6c27.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:627230910278:android:5c35bbe52261aab7",
+        "android_client_info": {
+          "package_name": "com.example.youngjungoo.warningapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "627230910278-bnf4qglh5nsk67e085emro4oq2fqhes3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLltDSq8WJyBN7poutOoQ_Pmca4g4kDLQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "627230910278-bnf4qglh5nsk67e085emro4oq2fqhes3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
