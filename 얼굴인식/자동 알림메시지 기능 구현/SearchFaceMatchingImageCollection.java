@@ -30,8 +30,8 @@ public class SearchFaceMatchingImageCollection {
 				.withCredentials(new ProfileCredentialsProvider()).withRegion("ap-northeast-2").build();
 
 		ObjectMapper objectMapper = new ObjectMapper();
-		String api_key = "api-key";
-		String api_secret = "api-secret";
+		String api_key = "api_key";
+		String api_secret = "api_secret";
 		Message coolsms = new Message(api_key, api_secret);
 		while (true) {
 			System.out.println("폴더 이름 입력 : ");
@@ -64,6 +64,7 @@ public class SearchFaceMatchingImageCollection {
 						continue;
 					} else {
 						for (FaceMatch face : faceImageMatches) {
+							
 							System.out.println("");
 							// System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(face));
 							System.out.println(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(face));
@@ -91,19 +92,11 @@ public class SearchFaceMatchingImageCollection {
 								System.out.println(e.getMessage());
 								System.out.println(e.getCode());
 							}
-							/*
-							 * JsonParser jsonParser = new JsonParser(); JsonObject jsonObject =
-							 * (JsonObject) jsonParser.parse(objectMapper.writerWithDefaultPrettyPrinter().
-							 * writeValueAsString(face)); JsonArray jsonArray =
-							 * (JsonArray)jsonObject.get("faces"); for (int j = 0; j < jsonArray.size();
-							 * j++) { JsonObject object = (JsonObject)jsonArray.get(j); String
-							 * externalImageId =object.get("externalImageId").getAsString(); String
-							 * phone_number =externalImageId.substring(0,externalImageId.length()-4);
-							 * System.out.println("폰번호 : "+phone_number); }
-							 */
-							System.out.println(i + "번째 frame에서 찾았습니다.");
-							break;
+							
+							//System.out.println(face);
 						}
+						System.out.println(i + "번째 frame에서 찾았습니다.");
+						break;
 
 					}
 					// flag=1;
