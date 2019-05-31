@@ -15,7 +15,7 @@
   },
   "S3TransferUtility": {
     "Default": {
-      "Bucket": "violence-image",
+      "Bucket": "user-info-database",
       "Region": "ap-northeast-2"
     }
   }
