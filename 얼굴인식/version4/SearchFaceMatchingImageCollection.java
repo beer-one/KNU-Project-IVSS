@@ -30,17 +30,15 @@ public class SearchFaceMatchingImageCollection {
 				.withCredentials(new ProfileCredentialsProvider()).withRegion("ap-northeast-2").build();
 
 		ObjectMapper objectMapper = new ObjectMapper();
-		String api_key = "api_key";
-		String api_secret = "api_secret";
+		String api_key = "api-key";
+		String api_secret = "api-secret";
 		Message coolsms = new Message(api_key, api_secret);
 		while (true) {
 			System.out.println("폴더 이름 입력 : ");
 			Scanner scan = new Scanner(System.in);
 			file_name = scan.nextLine();
 			for (int i = 0; i < 40; i++) {
-
 				photos[i] = file_name + "_" + i + ".png";
-
 			}
 			int i = 0;
 			// Get an image object from S3 bucket.
@@ -84,7 +82,8 @@ public class SearchFaceMatchingImageCollection {
 							params.put("type", "SMS");
 							params.put("text", "자녀가 폭력의 피해자일 수 있습니다. 앱을 확인하세요!" + i + "번째  사진 확인");
 							params.put("app_version", "test app 1.2"); // application name and version
-
+							RequestBucket bucket = new RequestBucket();
+							bucket.BucketToBucket("violence-image", "detected-image", photos[i]);
 							try {
 								JSONObject obj = (JSONObject) coolsms.send(params);
 								System.out.println(obj.toString());
