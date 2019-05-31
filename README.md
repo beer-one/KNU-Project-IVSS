@@ -59,20 +59,25 @@ rtpmp4vdepay ! avdec_mpeg4 ! autovideosink
 
 ## Android AWS SDK 및 S3 연동  
 
+- S3버킷과 Congnito 연동 및 권한 부여: https://console.aws.amazon.com/iam/home?region=us-east-2#/roles
 - https://pyxispub.uzuki.live/?p=970#i
 - AWS Cognito: https://console.aws.amazon.com/cognito/home?region=us-east-1
 - Android Commons-Loggins jar error 해결
 	- http://commons.apache.org
 	- https://github.com/aws-amplify/aws-sdk-android/issues/476
 
+<<<<<<< Updated upstream
 ## front-end(경보,알림 part) 진행상황  
+=======
+### front-end(경보,알림 part)   
+>>>>>>> Stashed changes
 
-- Android AWS S3 버킷 연동 성공
+- Android AWS S3 버킷 연동
 - 부모가 자녀 사진과 전화번호를 앱을 통해 S3버킷에 저장가능  
 
 ### 목표 
 - 폭력발생시, FireBase FCM을 통한 위젯알림 서비스 필요  
-
+- 폭력이 발생시 폭력이 된 시점의 이미지를 보여주는 기능 추가
 </br>
 <hr>
 
