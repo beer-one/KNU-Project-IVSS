@@ -96,11 +96,11 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.uploadBtn:
-
+                File file = new File(f.getParent(),phoneText.getText()+".jpg");
                 TransferObserver observer = transferUtility.upload(
                         "user-info-database",
-                        f.getName(),
-                        f
+                        file.getName(),
+                        file
                 );
                 break;
             case R.id.selectBtn:
