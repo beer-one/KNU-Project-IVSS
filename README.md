@@ -66,11 +66,8 @@ rtpmp4vdepay ! avdec_mpeg4 ! autovideosink
 	- http://commons.apache.org
 	- https://github.com/aws-amplify/aws-sdk-android/issues/476
 
-<<<<<<< Updated upstream
-## front-end(경보,알림 part) 진행상황  
-=======
+
 ### front-end(경보,알림 part)   
->>>>>>> Stashed changes
 
 - Android AWS S3 버킷 연동
 - 부모가 자녀 사진과 전화번호를 앱을 통해 S3버킷에 저장가능  
