@@ -4,7 +4,7 @@
 [![Java Version](https://img.shields.io/badge/Java-1.8-red.svg)](https://www.java.com/ko/) [![AWS Rekognition](https://img.shields.io/badge/lisence-AWSRekognition-yellow.svg)](https://aws.amazon.com/ko/rekognition/)
 [![Maven Version](https://img.shields.io/badge/Maven-3.6.0-blue.svg)](https://maven.apache.org)
 
-<img src="https://user-images.githubusercontent.com/33486820/58811517-e7769e00-865a-11e9-8266-fa6d66bc20b5.png" width="500">
+<img src="https://user-images.githubusercontent.com/33486820/58812500-fb230400-865c-11e9-83f4-3166726f6fdc.png" width="1000">
 
 ## 팀원
 - [윤서원](https://github.com/YunSeoWon)
@@ -45,9 +45,6 @@
 
 ### 경보
 - 매칭 된 얼굴의 데이터로 메세지보냄 과 동시에 모든 앱에 FCM (firebase cloud message)
-
-#### 알림 
-
 - 원내 데이터베이스(S3 버킷) 에 자녀 얼굴인식을 위해 자녀사진, 보호자 전화번호 등록
 - 폭력이 감지 되면 실시간으로 기록이 된 폭력시점의 스크린샷 로그를 확인 가능
 
