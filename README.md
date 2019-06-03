@@ -10,7 +10,7 @@
 	- 폭력감지 모델 분석서버 구축
 	- OpenCV 기반 Real Time Streaming 데이터 수집 프로세스 구현
 	- 프로세스 간 소켓 통신 구축
-- [구영준]
+- [구영준](https://github.com/gaki2745)
 	- 알림서비스 WarningApp AWS S3버킷 연동
 	- 폭력감지시 FCM을 통한 실시간 위젯 알림 구현
 	- 감지된 폭력로그를 앱에서 실시간으로 확인기능 구현
