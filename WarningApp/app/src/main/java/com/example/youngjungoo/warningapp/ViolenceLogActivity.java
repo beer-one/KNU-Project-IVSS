@@ -105,7 +105,9 @@ public class ViolenceLogActivity extends AppCompatActivity {
                         Log.i(TAG, "listing "+ listing);
                         Log.i(TAG,"listSize"+listing.size());
                         for(String key:listing){
-                            urlList.addItem(s3.getUrl("detected-image", key),"폭력이미지" + cnt++,"발생시간:" +key);
+                            String[] dateFormatter = key.split("_");
+                            String date = "발생일: " + dateFormatter[0] +"\n" + "시간: " + dateFormatter[1];
+                            urlList.addItem(s3.getUrl("detected-image", key),"폭력이미지" + cnt++,date);
                             Log.i(TAG, "key "+ key);
                         }
                     }

@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="New Text"
             android:id="@+id/timeText"
-            android:textSize="16dp"
+            android:textSize="10dp"
             android:textColor="#666666"
             android:layout_weight="1" />
     </LinearLayout>
