@@ -43,20 +43,8 @@
 
 추가적으로 구현하면 좋을 기능은 알아서 생각해보기(가능한 내에서만 …)
 
-
-
-
-
+<hr>
 </br>
-
-## Android AWS SDK 및 S3 연동  
-
-- S3버킷과 Congnito 연동 및 권한 부여: https://console.aws.amazon.com/iam/home?region=us-east-2#/roles
-- https://pyxispub.uzuki.live/?p=970#i
-- AWS Cognito: https://console.aws.amazon.com/cognito/home?region=us-east-1
-- Android Commons-Loggins jar error 해결
-	- http://commons.apache.org
-	- https://github.com/aws-amplify/aws-sdk-android/issues/476
 
 
 ## Streamer server
@@ -107,3 +95,12 @@
 명령](http://blog.naver.com/PostView.nhn?blogId=chandong83&logNo=221263551742)
 
 - [AWS API Guide](https://docs.aws.amazon.com/index.html?nc2=h_ql_doc)
+
+#### Android AWS SDK 및 S3 연동  
+
+- S3버킷과 Congnito 연동 및 권한 부여: https://console.aws.amazon.com/iam/home?region=us-east-2#/roles
+- https://pyxispub.uzuki.live/?p=970#i
+- AWS Cognito: https://console.aws.amazon.com/cognito/home?region=us-east-1
+- Android Commons-Loggins jar error 해결
+	- http://commons.apache.org
+	- https://github.com/aws-amplify/aws-sdk-android/issues/476
