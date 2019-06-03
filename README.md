@@ -80,9 +80,9 @@
 #### 앱 실행화면
 
 - App Splash View
-<img src="https://user-images.githubusercontent.com/33486820/58810529-11c75c00-8659-11e9-86d6-ce7a0f205c49.jpeg" width="300">
-- MainActivity
 <img src="https://user-images.githubusercontent.com/33486820/58810530-11c75c00-8659-11e9-88eb-0028648f3f5c.jpeg" width="300">
+- MainActivity
+<img src="https://user-images.githubusercontent.com/33486820/58810529-11c75c00-8659-11e9-86d6-ce7a0f205c49.jpeg" width="300">
 - S3UploadActivity(SignUpActivity)
 <img src="https://user-images.githubusercontent.com/33486820/58810533-125ff280-8659-11e9-8a91-e7ea0e0ab744.jpeg" width="300">
 - ViolenceListActivity
