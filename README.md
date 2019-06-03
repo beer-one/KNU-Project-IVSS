@@ -4,7 +4,6 @@
 [![Java Version](https://img.shields.io/badge/Java-1.8-red.svg)](https://www.java.com/ko/) [![AWS Rekognition](https://img.shields.io/badge/lisence-AWSRekognition-yellow.svg)](https://aws.amazon.com/ko/rekognition/)
 [![Maven Version](https://img.shields.io/badge/Maven-3.6.0-blue.svg)](https://maven.apache.org)
 
-<img src="https://user-images.githubusercontent.com/33486820/58812500-fb230400-865c-11e9-83f4-3166726f6fdc.png" width="1000">
 
 ## 팀원
 - [윤서원](https://github.com/YunSeoWon)
