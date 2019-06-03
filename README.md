@@ -1,18 +1,32 @@
 # KNU-Project-IVSS (Intelligent Video Surveillance System)
 > 경북대학교 컴퓨터학부 종합설계프로젝트2 
-### 지능형 영상 감시 시스템을 적용한 아동 교육기관 내 학대 방지 및 알림 서비스
+## 지능형 영상 감시 시스템을 적용한 아동 교육기관 내 학대 방지 및 알림 서비스
 [![Java Version](https://img.shields.io/badge/Java-1.8-red.svg)](https://www.java.com/ko/) [![AWS Rekognition](https://img.shields.io/badge/lisence-AWSRekognition-yellow.svg)](https://aws.amazon.com/ko/rekognition/)
 [![Maven Version](https://img.shields.io/badge/Maven-3.6.0-blue.svg)](https://maven.apache.org)
 
+<img src="https://user-images.githubusercontent.com/33486820/58811517-e7769e00-865a-11e9-8266-fa6d66bc20b5.png" width="500">
 
-### 팀원
-- 윤서원
-- 김동욱
-- 구영준
-- 성경화
+## 팀원
+- [윤서원](https://github.com/YunSeoWon)
+	- 폭력감지 모델 분석서버 구축
+	- OpenCV 기반 Real Time Streaming 데이터 수집 프로세스 구현
+	- 프로세스 간 소켓 통신 구축
+- [구영준]
+	- 알림서비스 WarningApp AWS S3버킷 연동
+	- 폭력감지시 FCM을 통한 실시간 위젯 알림 구현
+	- 감지된 폭력로그를 앱에서 실시간으로 확인기능 구현
+- [김동욱](https://github.com/Dong-wook94)
+	- 사용자 얼굴 등록 구현
+	- AWS Rekognition을 사용한 사용자 얼굴 식별 구현
+	- 식별된 사용자의 데이터로 문자메시지(Coolsms API)알림 기능 구현
 - 경예지
+	- 알림경보 앱 WarningApp UI/UX 디자인 담당
+	- 프로젝트 기획 및 논문 총괄
+- 성경화
 
-## 개요
+</br>
+
+# 개요
 
 ### 탐지
 - 폭력 영상 실시간으로 스트리밍 가동
@@ -30,22 +44,17 @@
 </br>
 
 ### 경보
-매칭 된 얼굴의 데이터로 메세지보냄 과 동시에 모든 앱에 FCM (firebase cloud message)
+- 매칭 된 얼굴의 데이터로 메세지보냄 과 동시에 모든 앱에 FCM (firebase cloud message)
 
-#### 알림 서비스 안드로이드앱 'WarningApp
+#### 알림 
 
-앱 기능
-- 원내 데이터베이스(S3 버킷) 에 자녀 얼굴인식을 위해
-자녀사진, 보호자 전화번호 등록
-
-- 폭력이 감지 되면 실시간으로 기록이 된 폭력시점의 스크린샷을 확인 가능
-
-
-추가적으로 구현하면 좋을 기능은 알아서 생각해보기(가능한 내에서만 …)
+- 원내 데이터베이스(S3 버킷) 에 자녀 얼굴인식을 위해 자녀사진, 보호자 전화번호 등록
+- 폭력이 감지 되면 실시간으로 기록이 된 폭력시점의 스크린샷 로그를 확인 가능
 
 <hr>
 </br>
 
+# 구현
 
 ## Streamer server
 - 웹캠을 연결하여 일정 시간마다 웹캠으로부터 얻은 동영상을 저장하여 해당 정보를 폭력감지 서버에 전송하는 서버.
@@ -67,20 +76,27 @@
 		- 다운로드 경로 : https://drive.google.com/open?id=1TwGzBTooHvAkBcrKzEfukrZMSakuCdYd
 				
 
-### 알림서비스(안드로이드 앱) 
+### 알림서비스(안드로이드 앱) 'WarningApp' 
 - Android AWS S3 버킷 연동
 - 부모가 자녀 사진과 전화번호를 앱을 통해 S3버킷에 저장가능  
 - 폭력기록을 앱에서 실시간으로 확인할 수 있고 즉각적이 대응이 가능
 
 #### 앱 실행화면
+
+- App Splash View
 <img src="https://user-images.githubusercontent.com/33486820/58810529-11c75c00-8659-11e9-86d6-ce7a0f205c49.jpeg" width="300">
+- MainActivity
 <img src="https://user-images.githubusercontent.com/33486820/58810530-11c75c00-8659-11e9-88eb-0028648f3f5c.jpeg" width="300">
+- S3UploadActivity(SignUpActivity)
 <img src="https://user-images.githubusercontent.com/33486820/58810533-125ff280-8659-11e9-8a91-e7ea0e0ab744.jpeg" width="300">
+- ViolenceListActivity
 <img src="https://user-images.githubusercontent.com/33486820/58810535-125ff280-8659-11e9-9dfc-200b34168e1d.jpeg" width="300">
+- DetailInfoActivity
 <img src="https://user-images.githubusercontent.com/33486820/58810531-125ff280-8659-11e9-989a-100553e28a63.jpeg" width="300">
 
 </br>
 <hr>
+
 
 ## Reference
 
