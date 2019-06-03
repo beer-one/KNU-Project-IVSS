@@ -12,16 +12,11 @@
     android:orientation="vertical"
     tools:context=".ViolenceLogActivity">
 
+
     <ListView
         android:id="@+id/violenceList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4.7" />
-
-    <ImageView
-        android:id="@+id/img_file"
-        android:layout_width="match_parent"
-        android:layout_height="316dp"
         android:layout_weight="4.7" />
 
 

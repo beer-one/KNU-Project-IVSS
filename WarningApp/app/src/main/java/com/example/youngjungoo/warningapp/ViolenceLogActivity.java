@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -20,10 +21,8 @@ import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.ObjectListing;
 import com.amazonaws.services.s3.model.S3ObjectSummary;
-import com.bumptech.glide.Glide;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -32,7 +31,7 @@ public class ViolenceLogActivity extends AppCompatActivity {
 
     private String TAG = "ViolenceLogActivity";
 
-    private ArrayList<String> urlList = new ArrayList<String>();
+    private ListViewAdapter urlList = new ListViewAdapter();
     private CognitoCachingCredentialsProvider credentialsProvider;
     private AmazonS3Client s3;
 
@@ -41,7 +40,8 @@ public class ViolenceLogActivity extends AppCompatActivity {
     //track Choosing Image Intent
     private static final int CHOOSING_IMAGE_REQUEST = 1234;
 
-    private ArrayAdapter adapter;
+    private int cnt = 1;
+    private ListViewAdapter adapter;
     private ListView listView;
     private ImageView imageView;
 
@@ -52,9 +52,26 @@ public class ViolenceLogActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_violence_log);
 
-        imageView = findViewById(R.id.img_file);
         listView = findViewById(R.id.violenceList);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView parent, View view, int position, long id) {
+                ListViewItem item = (ListViewItem) parent.getItemAtPosition(position) ;
+
+                Intent intent = new Intent(getApplicationContext(), DetailInfoActivity.class);
+
+                intent.putExtra("title", item.getTitle());
+                intent.putExtra("img", item.getIcon().toString());
+                intent.putExtra("dsc", item.getDesc());
+
+
+
+                startActivity(intent);
+
+            }
+        });
 
         credentialsProvider = new CognitoCachingCredentialsProvider(
                 getApplicationContext(),
@@ -68,28 +85,32 @@ public class ViolenceLogActivity extends AppCompatActivity {
 
 
         downloadFile();
-        adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, urlList) ;
-        listView.setAdapter(adapter) ;
 
     }
 
     private void downloadFile() {
 
-            transferUtility = TransferUtility.builder()
-                    .context(getApplicationContext())
-                    .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
-                    .s3Client(s3)
-                    .build();
-
-            //Toast.makeText(getApplicationContext(), , Toast.LENGTH_LONG).show();
+        transferUtility = TransferUtility.builder()
+                .context(getApplicationContext())
+                .awsConfiguration(AWSMobileClient.getInstance().getConfiguration())
+                .s3Client(s3)
+                .build();
 
         Thread thread = new Thread(new Runnable(){
             @Override
-            public void run() {
+            public synchronized void run() {
                 try {
-                    List<String> listing = getObjectNamesForBucket("detected-image", s3);
-                    Log.i(TAG, "listing "+ listing);
-                    urlList = (ArrayList<String>) listing;
+                    synchronized(this){
+                        List<String> listing = getObjectNamesForBucket("detected-image", s3);
+                        Log.i(TAG, "listing "+ listing);
+                        Log.i(TAG,"listSize"+listing.size());
+                        for(String key:listing){
+                            String[] dateFormatter = key.split("_");
+                            String date = "발생일: " + dateFormatter[0] +"\n" + "시간: " + dateFormatter[1];
+                            urlList.addItem(s3.getUrl("detected-image", key),"폭력이미지" + cnt++,date);
+                            Log.i(TAG, "key "+ key);
+                        }
+                    }
                 }
                 catch (Exception e) {
                     e.printStackTrace();
@@ -98,9 +119,22 @@ public class ViolenceLogActivity extends AppCompatActivity {
             }
         });
 
-
-
         thread.start();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // runOnUiThread를 추가하고 그 안에 UI작업을 한다.
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setUpListView();
+                    }
+                });
+            }
+        }).start();
+
+
 
        /*
         new Thread() {
@@ -122,15 +156,15 @@ public class ViolenceLogActivity extends AppCompatActivity {
         }.start();
         */
 
+        //URL url = s3.getUrl("detected-image", "mycam2_2.png");
 
-        URL url = s3.getUrl("detected-image", "mycam2_2.png");
+        //   Glide.with(getBaseContext())
+        //                .load(url.toString()).into(imageView);
 
-        Glide.with(getBaseContext())
-                .load(url.toString()).into(imageView);
 
     }
 
-    private List<String> getObjectNamesForBucket(String bucket, AmazonS3 s3Client) {
+    private synchronized List<String> getObjectNamesForBucket(String bucket, AmazonS3 s3Client) {
         ObjectListing objects=s3Client.listObjects(bucket);
         List<String> objectNames=new ArrayList<String>(objects.getObjectSummaries().size());
         Iterator<S3ObjectSummary> oIter=objects.getObjectSummaries().iterator();
@@ -142,9 +176,18 @@ public class ViolenceLogActivity extends AppCompatActivity {
             oIter=objects.getObjectSummaries().iterator();
             while (oIter.hasNext()) {
                 objectNames.add(oIter.next().getKey());
+                // urlList.add(oIter.next().getKey());
             }
         }
         return objectNames;
+    }
+
+    public synchronized void setUpListView() {
+        adapter = urlList;
+        adapter.refreshAdapter(urlList);
+        Log.i(TAG,"adapt" + adapter);
+
+        listView.setAdapter(adapter);
     }
 
     @Override

@@ -42,6 +42,9 @@ import java.io.IOException;
 public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     private String TAG = "SignUpActivity";
 
+
+    private Activity activity;
+
     CognitoCachingCredentialsProvider credentialsProvider;
     AmazonS3 s3;
     TransferUtility transferUtility;
@@ -92,16 +95,29 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.uploadBtn:
                 File file = new File(f.getParent(),phoneText.getText()+".jpg");
+
+                if(f.renameTo(file)){
+
+                    Toast.makeText(getApplicationContext(), "업로드 성공", Toast.LENGTH_SHORT).show();
+
+                }else{
+
+                    Toast.makeText(getApplicationContext(), "업로드 실패", Toast.LENGTH_SHORT).show();
+
+                }
+
                 TransferObserver observer = transferUtility.upload(
                         "user-info-database",
                         file.getName(),
                         file
                 );
+                finish();
                 break;
             case R.id.selectBtn:
                 selectImage();
@@ -426,5 +442,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
             imageview.setImageBitmap(bm);
         }
     }
+
+
 
 }
