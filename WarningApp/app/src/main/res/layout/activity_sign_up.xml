@@ -18,7 +18,7 @@
         android:id="@+id/imageView"
         android:layout_width="214dp"
         android:layout_height="230dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="#00FF0000"
         tools:layout_editor_absoluteX="85dp"
         tools:layout_editor_absoluteY="88dp"
         tools:ignore="MissingConstraints" />
@@ -27,7 +27,11 @@
         android:id="@+id/selectBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="이미지선택"
+        android:text="이미지 선택"
+        android:textStyle="bold"
+        android:background="#00FF0000"
+        android:drawableLeft="@drawable/image_btn"
+        android:drawablePadding="4dp"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="341dp" />
@@ -46,16 +50,19 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="전화번호를 입력해주세요."
-        android:inputType="textPersonName" />
+        android:inputType="phone" />
 
     <Button
         android:id="@+id/uploadBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="S3업로드"
+        android:text="S3 업로드"
+        android:textStyle="bold"
+        android:background="#00FF0000"
+        android:drawableLeft="@drawable/upload_btn"
+        android:drawablePadding="4dp"
         tools:layout_editor_absoluteX="148dp"
         tools:layout_editor_absoluteY="407dp"
         tools:ignore="MissingConstraints" />
-
 
 </LinearLayout>
